@@ -5,7 +5,7 @@ from pypfopt import expected_returns
 from pypfopt.efficient_frontier import EfficientFrontier
 from pypfopt.black_litterman import BlackLittermanModel
 
-prbr = pd.read_excel(r'C:\Users\Jhona\OneDrive\Área de Trabalho\Atualizado.xlsx', index_col='Data')
+prbr = pd.read_excel(r'C:\Users\Jhona\OneDrive\Área de Trabalho\PRBR11.xlsx', index_col='Data', parse_dates=['Data'])
 
 ###Expectativa de retornos de mu
 mu = expected_returns.mean_historical_return(prbr)
@@ -28,5 +28,5 @@ ef = EfficientFrontier(mu, sigma)
 raw_weights = ef.min_volatility()
 cleaned_weights = ef.clean_weights()
 print(cleaned_weights)
-ef.portfolio_performance(verbose=True, risk_free_rate = 0.0225)
+ef.portfolio_performance(verbose=True, risk_free_rate = 0.02)
 
